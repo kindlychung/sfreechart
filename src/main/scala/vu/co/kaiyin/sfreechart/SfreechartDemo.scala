@@ -1,20 +1,3 @@
-# sfreechart: Easy plotting in Scala
-
-This is an abstraction layer over jFreeChart to afford scala users the ability to plot with ease. If you have used R before and find it appealing to visualize you data in the repl with one-liners, you might like this.
-
-This project does not aim to provide publication quality charts, I see it as a convenient tool for the data scientist to have a quick look at their data without any ceremony (i.e. java verbosity). However, if you think there is a way to make the charts look better and produce better image files, feel free to talk about it in the issue tracker. 
-
-This is also a work in progress, I only cover the chart types that I find most useful personally, hence many chart types (including those that are pretty trivial to wrap) are not directly supported here. 
-
-## Include this library in your project
-
-
-## Examples
-
-Here is a demo app:
-
-
-```
 package vu.co.kaiyin.sfreechart
 
 import vu.co.kaiyin.sfreechart.implicits._
@@ -102,37 +85,3 @@ object SfreechartDemo {
     }
   }
 }
-```
-
-And you will see the following results:
-
-![](http://i.imgur.com/Xuz74Dt.png)
-
-![](http://i.imgur.com/bftKafm.png)
-
-![](http://i.imgur.com/vWkBuR5.png)
-
-![](http://i.imgur.com/KipnYi5.png)
-
-![](http://i.imgur.com/uWwm0yL.png)
-
-![](http://i.imgur.com/7IuMypm.png)
-
-![](http://i.imgur.com/WDqQm4y.png)
-
-![](http://i.imgur.com/FdHxPPG.png)
-
-![](http://i.imgur.com/YFJ0A3R.png)
-
-![](http://i.imgur.com/qScTz3z.png)
-
-![](http://i.imgur.com/5kGaKCF.png)
-
-
-## Contributing
-
-There are many ways to contribute:
-
-* Documentation.
-* Write wrappers for more chart types. Please have a look at `src/main/scala/vu/co/kaiyin/sfreechart/package.scala`.
-* Write converters for more data structures, for example, spark data frames or data sets. Please have a look at `src/main/scala/vu/co/kaiyin/sfreechart/implicits/package.scala`

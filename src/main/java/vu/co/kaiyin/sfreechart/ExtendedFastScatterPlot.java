@@ -1,9 +1,7 @@
-package vu.co.kaiyin.sfreechart; /**
- * Created by kaiyin on 2/10/16.
- */
+package vu.co.kaiyin.sfreechart;
+
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
-
 import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.plot.CrosshairState;
 import org.jfree.chart.plot.FastScatterPlot;

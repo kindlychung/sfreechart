@@ -6,7 +6,6 @@ import java.awt.Color;
 import java.awt.Paint;
 import java.io.Serializable;
 
-import org.jfree.chart.HashUtilities;
 import org.jfree.chart.renderer.PaintScale;
 import org.jfree.util.PublicCloneable;
 
@@ -91,18 +90,7 @@ public class ColorPaintScale
         double v = Math.max(value, this.lowerBound);
         v = Math.min(v, this.upperBound);
         double ratio = (v - this.lowerBound) / (this.upperBound - this.lowerBound);
-        return colorInterpolate((Color)startColor, endColor, ratio);
-    }
-
-    private int intInterpolate(int i1, int i2, double ratio) {
-        int diff = (int) ((i2 - i1) * ratio);
-        return i1 + diff;
-    }
-    private Color colorInterpolate(Color c1, Color c2, double ratio) {
-        int red = intInterpolate(c1.getRed(), c2.getRed(), ratio);
-        int green = intInterpolate(c1.getGreen(), c2.getGreen(), ratio);
-        int blue = intInterpolate(c1.getBlue(), c2.getBlue(), ratio);
-        return new Color(red, green, blue);
+        return InterpolateUtils.colorInterpolate((Color)startColor, endColor, ratio);
     }
 
     @Override

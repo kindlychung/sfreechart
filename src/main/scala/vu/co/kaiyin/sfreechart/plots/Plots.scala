@@ -4,9 +4,10 @@ import java.awt.{Shape, Stroke, RenderingHints}
 import javax.swing.JFrame
 
 import org.jfree.chart.plot.{PlotOrientation, XYPlot}
+import org.jfree.chart.renderer.category.StandardBarPainter
 import org.jfree.chart.{ChartFactory => cf}
 import org.jfree.chart.renderer.GrayPaintScale
-import org.jfree.chart.renderer.xy.XYBlockRenderer
+import org.jfree.chart.renderer.xy.{StandardXYBarPainter, XYBarRenderer, XYBlockRenderer}
 import org.jfree.chart.title.PaintScaleLegend
 import org.jfree.chart._
 import org.jfree.chart.axis.{AxisLocation, NumberAxis}
@@ -17,6 +18,7 @@ import org.jfree.data.xy.{IntervalXYDataset, XYZDataset}
 import org.jfree.ui.{RectangleEdge, RectangleInsets}
 import vu.co.kaiyin.sfreechart.{ColorPaintScale, ExtendedFastScatterPlot}
 import vu.co.kaiyin.sfreechart.implicits._
+import vu.co.kaiyin.sfreechart._
 import scala.util.Random.nextGaussian
 
 /**
@@ -35,21 +37,22 @@ object Plots {
                  tooltips: Boolean = true,
                  urls: Boolean = true,
                  alpha: Float = 0.5F,
-                 pannable: Boolean = false
+                 outline: Boolean = true,
+                 shadow: Boolean = false
                ): JFreeChart = {
     val hist = cf.createHistogram(
       title, xAxisLabel, yAxisLabel, dataset, orientation, legend, tooltips, urls
     )
     val xyPlot = hist.getPlot.asInstanceOf[XYPlot]
-    if (pannable) {
-      xyPlot.setDomainPannable(true)
-      xyPlot.setRangePannable(true)
-    }
     xyPlot.setForegroundAlpha(alpha)
+    val renderer = xyPlot.getRenderer.asInstanceOf[XYBarRenderer]
+    renderer.setDrawBarOutline(outline)
+    renderer.setBarPainter(new StandardXYBarPainter())
+    renderer.setShadowVisible(shadow)
     hist
   }
 
-  def controuPlot(dataset: XYZDataset, title: String = "Contour plot", scaleTitle: String = "Scale"): JFreeChart = {
+  def contourPlot(dataset: XYZDataset, title: String = "Contour plot", scaleTitle: String = "Scale"): JFreeChart = {
     val xAxis = new NumberAxis("x")
     val yAxis = new NumberAxis("y")
     val blockRenderer = new XYBlockRenderer
@@ -61,6 +64,8 @@ object Plots {
     xyPlot.setAxisOffset(new RectangleInsets(1D, 1D, 1D, 1D))
     xyPlot.setDomainPannable(true)
     xyPlot.setRangePannable(true)
+    xyPlot.setDomainGridlinesVisible(false)
+    xyPlot.setRangeGridlinesVisible(false)
     val chart = new JFreeChart(title, xyPlot)
     chart.removeLegend()
     val scaleAxis = new NumberAxis(scaleTitle)
@@ -72,32 +77,34 @@ object Plots {
   }
 
 
-  def fastScatter(data: Array[Array[Float]], title: String = "Scatter plot", pointSize: Int = 5, pointAlpha: Float = 0.3F): JFreeChart = {
+  def fastScatter(
+                   data: Array[Array[Float]],
+                   continuousColor: Boolean = true,
+                   title: String = "Scatter plot",
+                   scaleTitle: String = "scale",
+                   pointSize: Int = 5,
+                   pointAlpha: Float = 0.5F,
+                   grid: (Boolean, Boolean) = (true, true)
+                 ): JFreeChart = {
     val xAxis = new NumberAxis("x")
     val yAxis = new NumberAxis("y")
     xAxis.setAutoRangeIncludesZero(false)
     yAxis.setAutoRangeIncludesZero(false)
-    val fsPlot = new ExtendedFastScatterPlot(data, xAxis, yAxis, pointSize, pointAlpha)
+    val fsPlot = new EFastScatterPlot(data, continuousColor, xAxis, yAxis, scaleTitle, pointSize, pointAlpha)
     fsPlot.setDomainPannable(true)
     fsPlot.setRangePannable(true)
+    fsPlot.setDomainGridlinesVisible(grid._1)
+    fsPlot.setRangeGridlinesVisible(grid._2)
     val chart = new JFreeChart(title, fsPlot)
+    if (fsPlot.paintScaleLegend != null) {
+      chart.addSubtitle(fsPlot.paintScaleLegend)
+    }
+    if (fsPlot.colorLegend != null) {
+      chart.addSubtitle(fsPlot.colorLegend)
+    }
     chart.getRenderingHints.put(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON)
     chart
   }
 
-  def main(args: Array[String]) {
-    //    fastScatter(Array(Array(1.0F, 2.0F, 3.0F), Array(1.0F, 2.0F, 3.0F))).vis()
-    val x = (1 to 10000).map(_.toFloat).toArray
-    val y = x.map(i => i * nextGaussian().toFloat * 3F).toArray
-    fastScatter(Array(x, y)).vis()
-    val x1 = (-13.0 to 13.0 by 0.2).toArray
-    val y1 = (-13.0 to 13.0 by 0.2).toArray
-    val xyzData = (for {
-      i <- x1
-      j <- y1
-      if i > j
-    } yield Array(i, j, math.sin(i) + math.cos(j))).transpose
-    controuPlot(xyzData.toXYZDataset()).vis()
-    histogram((1 to 10000).map(_ => nextGaussian()).toArray.toHistogramDataset()).vis()
-  }
 }
+

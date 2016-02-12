@@ -16,6 +16,27 @@ import scala.math.Ordering.BooleanOrdering
   */
 package object sfreechart {
 
+  def minMax(a: Array[Double]) = {
+    a.foldLeft((a(0), a(0))) {
+      (acc, x) => (math.min(acc._1, x), math.max(acc._2, x))
+    }
+  }
+  def minMax(a: Array[Int]) = {
+    a.foldLeft((a(0), a(0))) {
+      (acc, x) => (math.min(acc._1, x), math.max(acc._2, x))
+    }
+  }
+  def minMax(a: Array[Long]) = {
+    a.foldLeft((a(0), a(0))) {
+      (acc, x) => (math.min(acc._1, x), math.max(acc._2, x))
+    }
+  }
+  def minMax(a: Array[Float]) = {
+    a.foldLeft((a(0), a(0))) {
+      (acc, x) => (math.min(acc._1, x), math.max(acc._2, x))
+    }
+  }
+
 
 
   def xyLine(
