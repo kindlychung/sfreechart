@@ -106,27 +106,37 @@ object SfreechartDemo {
 
 And you will see the following results:
 
-![](http://i.imgur.com/Xuz74Dt.png)
+![pie](http://i.imgur.com/5kGaKCF.png)
 
-![](http://i.imgur.com/bftKafm.png)
+![xy line chart, two lines](http://i.imgur.com/qScTz3z.png)
 
-![](http://i.imgur.com/vWkBuR5.png)
+![xy line chart, sin](http://i.imgur.com/YFJ0A3R.png)
 
-![](http://i.imgur.com/KipnYi5.png)
+![category line chart](http://i.imgur.com/FdHxPPG.png)
 
-![](http://i.imgur.com/uWwm0yL.png)
+![scatter plot, normal random](http://i.imgur.com/WDqQm4y.png)
 
-![](http://i.imgur.com/7IuMypm.png)
+![scatter plot, normal random noise](http://i.imgur.com/7IuMypm.png)
 
-![](http://i.imgur.com/WDqQm4y.png)
+![fake contour, exp](http://i.imgur.com/uWwm0yL.png)
 
-![](http://i.imgur.com/FdHxPPG.png)
+![contour plot](http://i.imgur.com/KipnYi5.png)
 
-![](http://i.imgur.com/YFJ0A3R.png)
+![fake contour plot using fast scatter, sin + cos](http://i.imgur.com/vWkBuR5.png)
 
-![](http://i.imgur.com/qScTz3z.png)
+![histogram](http://i.imgur.com/bftKafm.png)
 
-![](http://i.imgur.com/5kGaKCF.png)
+![scatter plot two color groups](http://i.imgur.com/Xuz74Dt.png)
+
+
+
+
+
+
+
+
+
+
 
 
 ## Contributing
