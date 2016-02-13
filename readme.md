@@ -4,7 +4,7 @@ This is an abstraction layer over jFreeChart to afford scala users the ability t
 
 This project does not aim to provide publication quality charts, I see it as a convenient tool for the data scientist to have a quick look at their data without any ceremony (i.e. java verbosity). However, if you think there is a way to make the charts look better and produce better image files, feel free to talk about it in the issue tracker. 
 
-This is also a work in progress, I only cover the chart types that I find most useful personally, hence many chart types (including those that are pretty trivial to wrap) are not directly supported here. 
+This is also a work in progress, I only cover the chart types that I find most useful personally, hence many chart types (including those that are pretty trivial to wrap) are not directly supported here (yet). 
 
 ## Include this library in your project
 
