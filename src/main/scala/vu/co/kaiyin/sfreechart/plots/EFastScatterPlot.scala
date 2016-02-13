@@ -58,12 +58,12 @@ class EFastScatterPlot(
     case Some(cs) => {
       val scaleAxis = new NumberAxis(scaleTitle)
       if (continuousColor) {
-        val palette: Array[Color] = colorBrewer.getColorPalette(2)
-        //        val palette: Array[Color] = Array(new Color(0, 0, 255, 255), new Color(255, 1, 1, 255))
+        //        val palette: Array[Color] = colorBrewer.getColorPalette(2)
+        val palette: Array[Color] = Array(new Color(0, 0, 255, 255), new Color(255, 1, 1, 255))
         val (cMin, cMax) = minMax(cs)
         val cRange = cMax - cMin
         val denominator = cRange + {
-          if(cRange == 0) 0.0001 else 0
+          if (cRange == 0) 0.0001 else 0
         }
         val paintScale = new ColorPaintScale(cMin, cMax, palette(0), palette(1))
         paintScaleLegend = new PaintScaleLegend(paintScale, scaleAxis)

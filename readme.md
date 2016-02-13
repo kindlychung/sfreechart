@@ -8,6 +8,12 @@ This is also a work in progress, I only cover the chart types that I find most u
 
 ## Include this library in your project
 
+```
+resolvers += "jitpack" at "https://jitpack.io"
+
+libraryDependencies += "com.github.kindlychung" % "sfreechart" % "0.1"	
+```
+
 
 ## Examples
 
