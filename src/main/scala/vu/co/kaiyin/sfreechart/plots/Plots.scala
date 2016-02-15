@@ -1,25 +1,17 @@
 package vu.co.kaiyin.sfreechart.plots
 
-import java.awt.{Shape, Stroke, RenderingHints}
-import javax.swing.JFrame
+import java.awt.RenderingHints
 
+import org.jfree.chart.axis.{AxisLocation, NumberAxis}
 import org.jfree.chart.plot.{PlotOrientation, XYPlot}
-import org.jfree.chart.renderer.category.StandardBarPainter
-import org.jfree.chart.{ChartFactory => cf}
-import org.jfree.chart.renderer.GrayPaintScale
 import org.jfree.chart.renderer.xy.{StandardXYBarPainter, XYBarRenderer, XYBlockRenderer}
 import org.jfree.chart.title.PaintScaleLegend
-import org.jfree.chart._
-import org.jfree.chart.axis.{AxisLocation, NumberAxis}
+import org.jfree.chart.{ChartFactory => cf, _}
 import org.jfree.data.Range
 import org.jfree.data.general.DatasetUtilities
-import org.jfree.data.statistics.HistogramDataset
 import org.jfree.data.xy.{IntervalXYDataset, XYZDataset}
 import org.jfree.ui.{RectangleEdge, RectangleInsets}
-import vu.co.kaiyin.sfreechart.{ColorPaintScale, ExtendedFastScatterPlot}
-import vu.co.kaiyin.sfreechart.implicits._
-import vu.co.kaiyin.sfreechart._
-import scala.util.Random.nextGaussian
+import vu.co.kaiyin.sfreechart.ColorPaintScale
 
 /**
   * Created by kaiyin on 2/10/16.

@@ -2,14 +2,11 @@ package vu.co.kaiyin
 
 import java.util.Locale
 
-import apple.laf.JRSUIConstants.Orientation
 import org.jfree.chart.plot.PlotOrientation
 import org.jfree.chart.{ChartFactory => cf, JFreeChart}
 import org.jfree.data.category.CategoryDataset
 import org.jfree.data.general.PieDataset
-import org.jfree.data.xy.{IntervalXYDataset, XYDataset}
-
-import scala.math.Ordering.BooleanOrdering
+import org.jfree.data.xy.XYDataset
 
 /**
   * Created by kaiyin on 2/9/16.

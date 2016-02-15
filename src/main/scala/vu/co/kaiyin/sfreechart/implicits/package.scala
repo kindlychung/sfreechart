@@ -2,11 +2,11 @@ package vu.co.kaiyin.sfreechart
 
 import javax.swing.JFrame
 
-import org.jfree.chart.{ChartPanel, ChartFrame, JFreeChart}
-import org.jfree.data.category.{DefaultCategoryDataset, CategoryDataset}
+import org.jfree.chart.{ChartPanel, JFreeChart}
+import org.jfree.data.category.{CategoryDataset, DefaultCategoryDataset}
 import org.jfree.data.general.{DefaultPieDataset, PieDataset}
 import org.jfree.data.statistics.HistogramDataset
-import org.jfree.data.xy.{DefaultXYZDataset, XYZDataset, XYSeriesCollection, XYSeries}
+import org.jfree.data.xy.{DefaultXYZDataset, XYSeries, XYSeriesCollection}
 
 
 /**
@@ -96,8 +96,7 @@ package object implicits {
     }
 
     def toXYZDataset(seriesName: String = "first") = {
-      // todo: check size
-//      checkMatrixSize(a, )
+      checkMatrixNRow(a, 3)
       val res = new DefaultXYZDataset()
       res.addSeries(seriesName, a)
       res
@@ -106,22 +105,20 @@ package object implicits {
 
 
   def checkMatrixSize[T](a: Array[Array[T]], nRow: Int, nCol: Int): Unit = {
+    checkMatrixNRow(a, nRow)
+    checkMatrixNCol(a, nCol)
+  }
+
+  def checkMatrixNRow[T](a: Array[Array[T]], nRow: Int): Unit = {
+    require(a.length == nRow)
+  }
+
+  def checkMatrixNCol[T](a: Array[Array[T]], nCol: Int): Unit = {
     val sizes = a.map(_.length).toSet
     require(
-      a.length == nRow &&
-        sizes.size == 1 &&
-        sizes.apply(0) == nCol
+      sizes.size == 1 &&
+        sizes(nCol)
     )
   }
-  // todo: check only row number
-  // todo: check only col number
-//  def checkMatrixSize[T](a: Array[Array[T]], ): Unit = {
-//    val sizes = a.map(_.length).toSet
-//    require(
-//      a.length == nRow &&
-//        sizes.size == 1 &&
-//        sizes.apply(0) == nCol
-//    )
-//  }
 
 }

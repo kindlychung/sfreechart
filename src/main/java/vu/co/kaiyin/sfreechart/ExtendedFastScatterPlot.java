@@ -1,12 +1,13 @@
 package vu.co.kaiyin.sfreechart;
 
-import java.awt.*;
-import java.awt.geom.Rectangle2D;
 import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.plot.CrosshairState;
 import org.jfree.chart.plot.FastScatterPlot;
 import org.jfree.chart.plot.PlotRenderingInfo;
 import org.jfree.ui.RectangleEdge;
+
+import java.awt.*;
+import java.awt.geom.Rectangle2D;
 
 public class ExtendedFastScatterPlot extends FastScatterPlot {
 

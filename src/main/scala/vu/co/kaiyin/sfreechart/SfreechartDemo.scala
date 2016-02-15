@@ -2,7 +2,8 @@ package vu.co.kaiyin.sfreechart
 
 import vu.co.kaiyin.sfreechart.implicits._
 import vu.co.kaiyin.sfreechart.plots.Plots._
-import util.Random.nextGaussian
+
+import scala.util.Random.nextGaussian
 
 object SfreechartDemo {
   def main(args: Array[String]) {

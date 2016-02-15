@@ -2,12 +2,11 @@ package vu.co.kaiyin.sfreechart;
 
 
 import org.jfree.chart.HashUtilities;
-import java.awt.Color;
-import java.awt.Paint;
-import java.io.Serializable;
-
 import org.jfree.chart.renderer.PaintScale;
 import org.jfree.util.PublicCloneable;
+
+import java.awt.*;
+import java.io.Serializable;
 
 public class ColorPaintScale
         implements PaintScale, PublicCloneable, Serializable {

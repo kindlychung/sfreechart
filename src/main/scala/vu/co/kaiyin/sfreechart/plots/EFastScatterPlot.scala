@@ -115,7 +115,6 @@ class EFastScatterPlot(
   def drawPoints(g2: Graphics2D, dataArea: Rectangle2D, x: Float, y: Float, color: Color): Unit = {
     val transX = this.getDomainAxis.valueToJava2D(x, dataArea, RectangleEdge.BOTTOM).asInstanceOf[Int]
     val transY = this.getRangeAxis.valueToJava2D(y, dataArea, RectangleEdge.LEFT).asInstanceOf[Int]
-    // todo: change paint color
     g2.setPaint(color)
     g2.fillOval(transX, transY, pointSize, pointSize)
   }
