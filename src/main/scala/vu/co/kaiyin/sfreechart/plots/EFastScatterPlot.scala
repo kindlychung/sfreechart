@@ -2,13 +2,12 @@ package vu.co.kaiyin.sfreechart.plots
 
 import java.awt._
 import java.awt.geom.Rectangle2D
+
 import org.jcolorbrewer.ColorBrewer
-import org.jfree.chart.{LegendItemSource, LegendItem, LegendItemCollection}
-import org.jfree.chart.axis.{AxisLocation, AxisLabelLocation, NumberAxis}
-import org.jfree.chart.plot.CrosshairState
-import org.jfree.chart.plot.FastScatterPlot
-import org.jfree.chart.plot.PlotRenderingInfo
+import org.jfree.chart.axis.{AxisLocation, NumberAxis}
+import org.jfree.chart.plot.{CrosshairState, FastScatterPlot, PlotRenderingInfo}
 import org.jfree.chart.title.{LegendTitle, PaintScaleLegend}
+import org.jfree.chart.{LegendItem, LegendItemCollection, LegendItemSource}
 import org.jfree.ui.RectangleEdge
 import vu.co.kaiyin.sfreechart.{ColorPaintScale, InterpolateUtils, minMax}
 
